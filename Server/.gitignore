@@ -3,3 +3,4 @@ node_modules
 gymappSecretKey.json
 *firebase-adminsdk*.json
 DB_Schema/
+Server/*.json
