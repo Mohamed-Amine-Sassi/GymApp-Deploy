@@ -1,4 +1,5 @@
 .env
 node_modules
-gymapp-f9b08-firebase-adminsdk-fbsvc-d028935ace
-DB_Schema
+gymappSecretKey.json
+*firebase-adminsdk*.json
+DB_Schema/
