@@ -1,6 +1,5 @@
 .env
 node_modules
-gymappSecretKey.json
-*firebase-adminsdk*.json
+serviceAccountKey.json
 DB_Schema/
 Server/*.json
