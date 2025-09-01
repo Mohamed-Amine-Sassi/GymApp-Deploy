@@ -1,16 +1,24 @@
-import { Member } from "../../DB_Schema/memberSchema.mjs";
+import { db } from "../../DB/firebase.mjs"; // Firebase Admin SDK
 
 const getAllMembers = async (req, res) => {
   try {
-    const AllMembers = await Member.find();
-    if (!AllMembers) {
+    const snapshot = await db.collection("members").get();
+
+    if (snapshot.empty) {
       return res.status(200).send("No Members Yet!");
-    } else {
-      return res.status(200).json(AllMembers);
     }
+
+    // Map documents to array
+    const allMembers = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return res.status(200).json(allMembers);
   } catch (err) {
-    console.log("err in when getting all members:", err);
-    return res.status(400).send("err in when getting all members:");
+    console.error("Error getting all members:", err);
+    return res.status(400).send("Error getting all members");
   }
 };
+
 export default getAllMembers;

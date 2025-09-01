@@ -7,14 +7,15 @@ app.use(express.json());
 import dotenv from "dotenv";
 dotenv.config();
 const port = process.env.port || 3000;
+//db
+import { db } from "./DB/firebase.mjs";
 //midlwate
 import authMiddleware from "./Functions/AuthFunctions/authMiddleware.mjs";
 //data base related
-import mongoose from "mongoose";
-mongoose.connect(process.env.MongooseLink);
+// import mongoose from "mongoose";
+// mongoose.connect(process.env.MongooseLink);
 //Cros platform
 import cors from "cors";
-
 app.use(
   cors({
     origin: "http://localhost:5173",
